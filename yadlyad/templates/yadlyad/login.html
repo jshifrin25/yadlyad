@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} YadlYad Order Login {% endblock %}
+{% block static_content %}
+  <link rel="stylesheet" href="{% static 'yadlyad/css/login-form.css' %}" media="all" />
+{% endblock %}
+    
+    {% block header %}
+        <h1>YadlYad Order Login</h1>
+        {% if form.errors %}
+            <span class="login-error">An incorrect username or password was entered</span>
+        {% endif %}
+    {% endblock %}
+    {% block content %}
+    <form action="{% url 'login' %}" class="login-form" method="post"> 
+        {% csrf_token %}
+        <div class="login-container"> 
+            <h1 class="login-header">Login to Yad L'Yad</h1> 
+            <div class="username"> 
+                {{form.username.label_tag}}
+                {{form.username}}
+        </div>
+        <div class="password">
+            {{form.password.label_tag}}
+            {{form.password}}
+        </div>
+        <div class="button-container">
+            <span class="submit-button">
+                <input type="submit" class="login-button" value="Login" />
+            </span>
+        </div>
+    </div>
+    <input type="hidden" name="next" value="{{next}}" />
+    
+</form>
+{% endblock %}
