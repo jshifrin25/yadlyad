@@ -1,0 +1,13 @@
+.logout-form {
+    float: left;
+    padding-right: 10px;
+    position: relative;
+}
+#header {
+    float: left;
+    width: 100%;
+}
+body {
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+}

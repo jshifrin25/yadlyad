@@ -1,0 +1,59 @@
+body {
+	padding: 20% 0 0 35%;
+	font-family: Arial, sans-serif;
+}
+
+div#header h1 {
+	display: block;
+	margin-left: 20px;
+}
+
+.login-form {
+	padding: 10px 20px;
+	width: 356px;
+	background: #f5f6f6;
+	border-radius: 5px;
+	box-shadow: 4px 4px 4px -1px #443551;
+	border: 2px solid #ccc2c2;
+	background:
+		url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZjZmNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIxJSIgc3RvcC1jb2xvcj0iI2RiZGNlMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ5JSIgc3RvcC1jb2xvcj0iI2I4YmFjNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgwJSIgc3RvcC1jb2xvcj0iI2RkZGZlMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNWY2ZjYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3
+		80%, #f5f6f6 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f6f6),
+		color-stop(21%, #dbdce2), color-stop(49%, #b8bac6),
+		color-stop(80%, #dddfe3), color-stop(100%, #f5f6f6) );
+	background: -webkit-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%,
+		#dddfe3 80%, #f5f6f6 100%);
+	background: -o-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3
+		80%, #f5f6f6 100%);
+	background: -ms-linear-gradient(top, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3
+		80%, #f5f6f6 100%);
+	background: linear-gradient(to bottom, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3
+		80%, #f5f6f6 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(  startColorstr='#f5f6f6',
+		endColorstr='#f5f6f6', GradientType=0 );
+}
+
+.login-container .username,.login-container .password {
+	margin-bottom: 10px;
+	margin-left: 50px;
+}
+
+.login-container .username > input, 
+.login-container .password > input {
+	padding-left: 5px;
+}
+
+.login-container .password > input {
+	margin-left: 5px;
+}
+
+.login-container .button-container {
+	margin-left: 50px;
+}
+
+.login-container .login-header {
+	color: #2f2c2c;
+	text-align: center;
+	font-size: 18px;
+}
