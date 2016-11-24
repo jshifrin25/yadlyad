@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load staticfiles %} {% block static_content %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'orders/css/order-details.css' %}" media="all" type="text/css" /> {% endblock %} {% block title %} YadlYad Order Confirmation {% endblock %} {% block content %}
+<h1>Delivery Date is {{order.delivery.delivery_date}}</h1>
+<div>You Finished your Order {{order.id}}</div>
+<div class="section">
+    <a href="{% url 'orders:index' %}" class="return-to-list">Return to Order List</a>
+</div>
+<div class="section">
+
+    <div class="column-header">Product</div>
+    <div class="column-header">Quantity</div>
+
+    {% for item in order.item_set.all %}
+    <div class="section">
+        <div class="item">{{item.product.prod_name}}</div>
+        <div class="item">{{item.quantity}}</div>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}

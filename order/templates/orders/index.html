@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Order History {% endblock %}
+{% block static_content %}
+{{block.super}}
+<link media="all" rel="stylesheet"
+    href="{% static 'orders/css/orders.css' %}" type="text/css" />
+    {% endblock %}
+ {% block header %} 
+    {{block.super}}
+    <span class="add-order">
+        <a href="{% url 'orders:order' %}">add order</a>
+    </span>
+ {% endblock %}
+{% block content %}
+<div class="orders-container">
+    <h1>Order History</h1>
+    <div>Welcome, {{user.username|title}}</div>
+    <div class="order-row">
+        <div class="column column-1 column-header">
+            <span>Order Number</span>
+        </div>
+        <div class="column column-2 column-header">
+            <span>Date of Order</span>
+        </div>
+        <div class="column column-3 column-header">
+            <span>Delivery Date</span>
+        </div>
+    </div>
+    {% for order in object_list %}
+    <div class="order-row">
+        <div class="column column-1">
+            <span class="order-id"> <a href="{% url 'orders:order-detail' order.id %}">
+                    {{order.id}} </a>
+            </span>
+        </div>
+        <div class="column column-2">
+            <span class="date-created">{{order.date_created}}</span>
+        </div>
+        <div class="column column-3">
+            <span class="delivery-date">{{order.delivery.delivery_date}}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% load staticfiles %} {% block title %}New Order {% endblock %} {% block static_content %} {{block.super}}
+<link rel="stylesheet" type="text/css" href="{% static 'orders/css/order-form.css' %}" />
+<script type="text/javascript" src="{% static 'yadlyad/js/lib/jquery-1.11.3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'orders/js/yadlyadsite.js' %}"></script>
+<script type="text/javascript" src="{% static 'orders/js/order-form.js' %}"></script>
+{% endblock %}
+{% block header %} 
+{{block.super}}
+<span class="user-id">User-id# {{user.id}}</span> {% endblock %} {% block content %} {% if order.item_set.all.count > 0 %}
+<form action="" method="post" class="order-form">
+    {% csrf_token %} {{ formset.management_form }}
+    <div class="order-num">Order# {{ order.id }}</div>
+    <div class="items-container">
+        {% for category in categories %}
+        <h1>{{category}}</h1>
+        <div class="column-header">
+            Quantity
+        </div>
+        {% for item in order.item_set.all %}
+            {% if item.product.category.cat_name == category.cat_name %}
+
+        <div class="product-item-row">
+            <span class="product-name">
+					{{ item.product.prod_name }}
+			</span>
+            <span class="quantity" data-quantity-limit="{{ item.product.limit }}">
+				<input type="number" value="{{ item.quantity }}" name="{{item.product.prod_name}}" />
+			</span>
+        </div>
+       {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+    <div class="button-group">
+        <input id="order-submit" name="submit" type="submit" value="Update" />
+        <input type="reset" value="Reset" />
+    </div>
+    <input type="hidden" name="order_id" value="{{ order.id }}" />
+</form>
+{% else %}
+<div>No products available</div>
+{% endif %} {% endblock %}

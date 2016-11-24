@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>{% block title %}Yadlyad Order Form{% endblock %}</title>
+	    {% block static_content %}
+          <link rel="stylesheet" type="text/css" href="{% static "yadlyad/css/styles.css" %}" /> 
+       {% endblock %}          
+        </head>
+        <body>
+            <div id="header">
+                {% block header %} 
+                    <form method="GET" action="{% url 'logout' %}" class="logout-form">
+                        <input class="logout_link" type="submit" value="Logout" />
+                    </form>
+                {% endblock %}
+            </div>
+            <div id="content">
+                {% block content %} {% endblock %}
+            </div>
+            <div id="footer">
+                {% block footer %} {% endblock %}
+            </div>
+        </body>
+</html>
