@@ -3,6 +3,18 @@
     padding-right: 10px;
     position: relative;
 }
+
+.logout-form .logout-link {
+    border: solid #eee 2px;
+    background-color: #00FE9B;
+    padding: 8px;
+    color: #444;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 3px 0 0 5px;
+    font-size: 1.2em;
+}
+
 #header {
     float: left;
     width: 100%;

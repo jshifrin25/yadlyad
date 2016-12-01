@@ -18,7 +18,7 @@
   };
   return this;
 })(jQuery);
-;var OrderTable;
+var OrderTable;
 
 OrderTable = function(rowClass) {
   var _this = this;
@@ -27,4 +27,4 @@ OrderTable = function(rowClass) {
     return $("." + _this.rowClass).tableHighlighter();
   });
 };
-;OrderTable("product-item-row");
+OrderTable("product-item-row");

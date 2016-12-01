@@ -8,9 +8,6 @@
     {% endblock %}
  {% block header %} 
     {{block.super}}
-    <span class="add-order">
-        <a href="{% url 'orders:order' %}">add order</a>
-    </span>
  {% endblock %}
 {% block content %}
 <div class="orders-container">

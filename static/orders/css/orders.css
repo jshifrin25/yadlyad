@@ -56,7 +56,7 @@
 }
 
 .orders-container .column > span.order-id {
-    margin-left: 75px;
+    margin-left: 50px;
 }
 
 div.orders-container div.order-row div.column span.order-id a:visited {
