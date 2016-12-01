@@ -1,0 +1,28 @@
+#header,
+#content,
+#footer {
+    width: 100%;
+    margin: 0 0 10px 0;
+}
+div {
+    float: left;
+}
+div.section {
+    width: 100%;
+    padding: 10px 0 10px 10px;
+}
+div.column,
+div.column-header {
+    padding: 10px 30px;
+}
+.column-header {
+    font-weight: bold;
+    color: #333333;
+}
+div.item {
+    margin-left: 20px;
+    width: 130px;
+}
+div.item {
+    left: 100%;
+}

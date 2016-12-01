@@ -1,0 +1,93 @@
+.order-form{}
+
+body {
+	padding-left: 20px;
+	padding-top: 15px;
+	color: #222222;
+	
+}
+
+.user-id {
+	display: block;
+	text-align: right;
+	float: right;
+	position: relative;
+	margin-right: 65px;
+	margin-top: -10px;
+}
+
+.order-form .order-num {
+	display: block;
+	margin-top: 10px;
+	font-size: 20px;
+	color: #000000;
+	
+}
+
+.order-form .product-item-row {
+	width: 100%;
+	padding: 10px 20px;
+	display: block;
+	width: 40%;
+	border: 1px solid #222222;
+}
+
+.order-form .items-container > .column-header {
+	display: block;
+	position: relative;
+	font-size: 18px;
+	margin-left: 270px;
+	margin-bottom: 10px;
+}
+
+.order-form .product-item-row .product-name {
+	font-weight: bold;
+	font-size: 16px;
+	font-family: sans-serif;
+	width: 250px;
+	display: block;
+	position: relative;
+	float: left;
+	
+}
+
+.order-form .highlighted-row {
+	background-color: #DAF7E8;
+}
+
+h1{
+	font-family: Veranda, sans-serif;
+	font-size: 24;
+	padding-left: 10px;
+	width: 300px;
+	color: #B5B5B5;
+	margin-bottom: 10px;
+}
+
+h1:after {
+   margin-left: 5px;
+   
+}
+
+.delivery-date, .date-created, .order-id {
+	display: block;
+	margin-left: 150px;
+	font-size: 14pt;
+	text-align: right;
+	float: left;
+	position: relative;
+}
+
+.order-form .order-row {
+	float: left;
+	position: relative;
+}
+
+.order-form .order-row:after {
+	clear: both;
+}
+
+.order-form .button-group {
+  margin-top: 10px;
+}
+

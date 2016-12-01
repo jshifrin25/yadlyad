@@ -1,0 +1,69 @@
+.orders-container: {
+	font-family: Arial, sans-serif;
+}
+
+.add-order {
+   display: block;
+   padding: 10px;
+   background-color: #f89700;
+    border: solid 1px #ccc;
+    position: relative;
+    float: left;
+    margin: 0 5px;
+}
+
+.add-order > a {
+    color: #fff;
+   text-decoration: none;   
+}
+.add-order > a:visited {
+    color: #fff;
+}
+
+.orders-container {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.orders-container .order-row {
+    float: left;
+    position: relative;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.orders-container .column {
+    display: block;
+    float: left;
+    position: relative;
+    width: 224px;
+}
+
+.delivery-date, .date-created, .order-id {
+    display: block;
+    margin-left: 10px;
+    font-size: 14px;
+    text-align: left;
+    float: left;
+    position: relative;
+    width: 200px;
+}
+
+.orders-container .column-header {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.orders-container .column > span.order-id {
+    margin-left: 75px;
+}
+
+div.orders-container div.order-row div.column span.order-id a:visited {
+    color: #0000ff;
+}
+
+.orders-container .column-1 {
+    margin-left: 10px;
+}
+
