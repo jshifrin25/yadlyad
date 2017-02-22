@@ -19,7 +19,6 @@ class OrderAdmin(admin.ModelAdmin):
 
     display_order_id.short_description = 'Order ID'
 
-
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     fieldsets = [

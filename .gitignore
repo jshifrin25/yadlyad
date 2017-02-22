@@ -1,3 +1,6 @@
-**/static/admin
+/static/admin
+__pycache__/
+*.e4p
 *~
-**/__pycache__
+__init__.py
+_eric6project/

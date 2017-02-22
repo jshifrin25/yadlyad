@@ -18,8 +18,14 @@ class DeliveryAdmin(admin.ModelAdmin):
     list_display = ('delivery_date', 'display_order_count')
     fields = ('delivery_date',)
     inlines = [OrderInline]
+    actions = ['duplicate_orders']
 
     def display_order_count(self, obj):
         return obj.get_order_count()
+        
+    def duplicate_orders(self,  request,  queryset):
+        model = self.model
+        return model
+        
 
     display_order_count.short_description = 'Number of Orders'
