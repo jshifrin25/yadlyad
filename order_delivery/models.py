@@ -6,6 +6,7 @@ from order.models import Item, Product
 class Delivery(models.Model):
     delivery_date = models.DateField('Delivery Date', 'delivery_date')
     total_orders = models.IntegerField('Total Orders', 'total_orders', default=0)
+    for_pesach = models.BooleanField('For Pesach', 'for_pesach', default=False)
 
     class Meta:
         verbose_name_plural = "deliveries"
