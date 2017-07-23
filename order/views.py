@@ -3,6 +3,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from order.models import Category, Item, Order, Product
 from django.forms.models import modelformset_factory
+from .forms import ItemForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout_then_login
 from  django.views import generic
@@ -10,35 +11,27 @@ from  django.views import generic
 
 @login_required(login_url="/accounts/login/")
 def order(request, order_id=-1):
-    item_form_set = modelformset_factory(Item, fields=('quantity',))
+    item_form_set = modelformset_factory(Item,  form=ItemForm)
     categories = Category.objects.all()
     if request.method == 'POST':
         order_num = request.POST['order_id']
         if request.POST.__contains__('cancel'):
             return cancel_order(request, order_num)
         inst = Order.objects.get(pk=order_num)
-        for product in Product.objects.all():
-            if request.POST.__contains__(product.prod_name):
-                inst.item_set.update(product=product, quantity=request.POST[product.prod_name])
-        return confirmation(request, order_num)
-    elif order_id != -1:
-        inst = Order.objects.get(pk=order_id)
-        formset = item_form_set(queryset=inst.items.through)
+        print(request.POST['submit'])
+        formset = item_form_set(request.POST)
+        print(formset.as_p)
+        if formset.is_valid():
+            print("Formset is valid")
+            print(formset.as_p)
+            formset.save()
+        return confirmation(request, inst)
+    else:
+        order = Order.objects.filter(recipient=request.user).latest('id')
+        formset = item_form_set(queryset=Item.objects.filter(order__id=order.id))
         context = {
             "formset": formset,
-            "order_num": order_id,
-            "categories": categories
-        }
-        return render(request, "orders/order.html", context)
-    elif order_id == -1:
-        inst = Order.objects.filter(recipient=request.user).latest('id');
-        for product in Product.objects.all():
-            if product.prod_name not in inst.item_set.values_list('product__prod_name', flat=True):
-                item = Item(quantity=0, product=product, order=inst)
-                item.save()
-                inst.item_set.add(item)
-        context = {
-            "order": inst,
+            "order_num": order.id,
             "categories": categories
         }
         return render(request, "orders/order.html", context)
@@ -54,11 +47,8 @@ def details(request):
 
 
 @login_required(login_url="/accounts/login/")
-def confirmation(request, order_id=1):
-    inst = Order.objects.get(id=order_id)
-    items = Item.objects.filter(order=inst)
+def confirmation(request, inst):
     context = {
-        "items": items,
         "order": inst
     }
     return render(request, "orders/confirmation.html", context)

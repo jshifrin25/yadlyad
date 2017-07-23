@@ -16,7 +16,7 @@ class OrderInline(admin.TabularInline):
 @admin.register(Delivery)
 class DeliveryAdmin(admin.ModelAdmin):
     list_display = ('delivery_date', 'display_order_count')
-    fields = ('delivery_date',)
+    fields = ('delivery_date','for_pesach')
     inlines = [OrderInline]
     actions = ['duplicate_orders']
 

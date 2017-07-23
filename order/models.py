@@ -1,5 +1,4 @@
 from django.db import models
-from django.forms import BaseModelFormSet
 
 
 # Create your models here.
@@ -46,7 +45,3 @@ class Item(models.Model):
     def __str__(self):
         return 'Item Id: ' + str(self.pk) + ' :' + self.product.prod_name + ' quantity: ' + str(self.quantity)
 
-
-class ItemFormSet(BaseModelFormSet):
-    def __init__(self, *args, **kwargs):
-        super(ItemFormSet, self).__init__(*args, **kwargs)

@@ -6,25 +6,27 @@
 {% endblock %}
 {% block header %} 
 {{block.super}}
-<span class="user-id">User-id# {{user.id}}</span> {% endblock %} {% block content %} {% if order.item_set.all.count > 0 %}
+<span class="user-id">User-id# {{user.id}}</span> {% endblock %} {% block content %} {% if formset %}
 <form action="" method="post" class="order-form">
-    {% csrf_token %} {{ formset.management_form }}
-    <div class="order-num">Order# {{ order.id }}</div>
+    {% csrf_token %} 
+    {{ formset.management_form }}
+    <div class="order-num">Order# {{ order_num }}</div>
     <div class="items-container">
         {% for category in categories %}
         <h1>{{category}}</h1>
         <div class="column-header">
             Quantity
         </div>
-        {% for item in order.item_set.all %}
-            {% if item.product.category.cat_name == category.cat_name %}
-
+        {% for form in formset %}
+             {% if form.instance.id != None and form.instance.product.category.cat_name == category.cat_name %}
+                 {{form.id}}
+            
         <div class="product-item-row">
             <span class="product-name">
-					{{ item.product.prod_name }}
+					{{form.instance.product.prod_name}}
 			</span>
-            <span class="quantity" data-quantity-limit="{{ item.product.limit }}">
-				<input type="number" value="{{ item.quantity }}" name="{{item.product.prod_name}}" />
+            <span class="quantity" data-quantity-limit="{{form.instance.product.limit}}">
+				{{form.quantity}}
 			</span>
         </div>
        {% endif %}
@@ -35,7 +37,7 @@
         <input id="order-submit" name="submit" type="submit" value="Update" />
         <input type="reset" value="Reset" />
     </div>
-    <input type="hidden" name="order_id" value="{{ order.id }}" />
+    <input type="hidden" name="order_id" value="{{ order_num }}" />
 </form>
 {% else %}
 <div>No products available</div>

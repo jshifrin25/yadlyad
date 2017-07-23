@@ -13,6 +13,9 @@
                     <form method="GET" action="{% url 'logout' %}" class="logout-form">
                         <input class="logout-link" type="submit" value="Logout" />
                     </form>
+                    {% if user.is_superuser %}
+                       <a href="{% url 'admin:index' %}">admin site</a>
+                    {% endif %}
                 {% endblock %}
             </div>
             <div id="content">

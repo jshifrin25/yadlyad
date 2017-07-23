@@ -18,8 +18,11 @@
       });
     };
     createOptions = function(elem) {
+        var $origin;
         var select = $('<select></select>');
-        var limit = $(elem).data('quantityLimit');
+        $origin = $(elem);
+        select.attr('name', $origin.children('input').attr('name'));
+        var limit = $origin.data('quantityLimit');
         for(var i = 0; i <= limit; i++) {
             $('<option></option>').val(i).text(i).appendTo(select);
         }
