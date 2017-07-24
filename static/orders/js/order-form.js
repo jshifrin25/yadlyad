@@ -22,9 +22,15 @@
         var select = $('<select></select>');
         $origin = $(elem);
         select.attr('name', $origin.children('input').attr('name'));
+        var val = parseInt($origin.children('input').val());
         var limit = $origin.data('quantityLimit');
         for(var i = 0; i <= limit; i++) {
-            $('<option></option>').val(i).text(i).appendTo(select);
+            var $option = $('<option></option>');
+            console.log(val);
+            if (val === i) {
+                $option.prop('selected', true);
+            }
+            $option.val(i).text(i).appendTo(select);
         }
         return select;
     };

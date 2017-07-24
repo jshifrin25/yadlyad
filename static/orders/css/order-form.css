@@ -25,46 +25,67 @@ body {
 }
 
 .order-form .product-item-row {
-	width: 100%;
+	position: relative;
+    float: left;
 	padding: 10px 20px;
 	display: block;
-	width: 40%;
-	border: 1px solid #222222;
+	border: 1px solid #222;
+    clear: both;
+}
+
+.order-form .items-container {
+    margin-bottom: 10px;
+    float: left;
+    clear: both;
+    width: 100%;
 }
 
 .order-form .items-container > .column-header {
 	display: block;
 	position: relative;
 	font-size: 18px;
-	margin-left: 270px;
+	margin-left: 320px;
 	margin-bottom: 10px;
+}
+
+.order-form .product-item-row > div {
+    display: block;
+    float: left;
+    position: relative;
 }
 
 .order-form .product-item-row .product-name {
 	font-weight: bold;
 	font-size: 16px;
 	font-family: sans-serif;
-	width: 250px;
-	display: block;
-	position: relative;
-	float: left;
-	
+	margin-right: 10px;
+    width: 290px;
+}
+
+.order-form .product-item-row .quantity {
+    width: 250px;
+}
+
+.order-form .product-item-row .quantity input,
+.order-form .product-item-row .quantity select {
+    padding: 5px 10px;
+    width: 75px;
 }
 
 .order-form .highlighted-row {
 	background-color: #DAF7E8;
 }
 
-h1{
+h2{
 	font-family: Veranda, sans-serif;
-	font-size: 24;
+	font-size: 24px;
 	padding-left: 10px;
 	width: 300px;
 	color: #B5B5B5;
 	margin-bottom: 10px;
 }
 
-h1:after {
+h2:after {
    margin-left: 5px;
    
 }
@@ -88,6 +109,14 @@ h1:after {
 }
 
 .order-form .button-group {
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+.order-form .button-group input {
+    margin-right: 5px;
+    padding: 5px;
+    color: #ccc;
+    background-color: #777;
+    border: 2px solid #333;
 }
 

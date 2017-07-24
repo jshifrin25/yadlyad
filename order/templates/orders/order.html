@@ -11,9 +11,9 @@
     {% csrf_token %} 
     {{ formset.management_form }}
     <div class="order-num">Order# {{ order_num }}</div>
-    <div class="items-container">
         {% for category in categories %}
-        <h1>{{category}}</h1>
+        <div class="items-container">
+        <h2>{{category}}</h2>
         <div class="column-header">
             Quantity
         </div>
@@ -22,17 +22,20 @@
                  {{form.id}}
             
         <div class="product-item-row">
-            <span class="product-name">
+            <div class="product-name">
 					{{form.instance.product.prod_name}}
-			</span>
-            <span class="quantity" data-quantity-limit="{{form.instance.product.limit}}">
+            <span class="product-desc">
+                ({{form.instance.product.prod_description}})
+            </span>
+			</div>
+            <div class="quantity" data-quantity-limit="{{form.instance.product.limit}}">
 				{{form.quantity}}
-			</span>
+			</div>
         </div>
        {% endif %}
         {% endfor %}
+        </div>
         {% endfor %}
-    </div>
     <div class="button-group">
         <input id="order-submit" name="submit" type="submit" value="Update" />
         <input type="reset" value="Reset" />
