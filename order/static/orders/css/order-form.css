@@ -68,8 +68,8 @@ body {
 
 .order-form .product-item-row .quantity input,
 .order-form .product-item-row .quantity select {
-    padding: 5px 10px;
-    width: 75px;
+    padding: 5px;
+    width: 55px;
 }
 
 .order-form .highlighted-row {
