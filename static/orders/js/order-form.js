@@ -1,12 +1,23 @@
 (function($, window, undefined) {
-    var quantityFilter, replaceInputField, createOptions;
+    var quantityFilter, replaceInputField, createOptions, initEvents;
     var order = {
         quantityLimits: null,
         init: function() {
            order.quantityLimits = $('.quantity').filter(quantityFilter);
            replaceInputField();
+           initEvents(); 
            return order;
         }
+    };
+    
+    initEvents = function() {
+       $('input:reset').on('click',  function(e) {e.preventDefault(); $.post('reset/', {order: $('#orderId').val() })
+       .done(function(data) {
+                for(key in data) {
+                    $('div.product-name:contains("' + key + '")+div.quantity').children().val(data[key]);
+                }
+           });
+        });    
     };
     quantityFilter = function(index, elem) {
       return $(elem).data('quantityLimit') > 0;
@@ -34,8 +45,31 @@
         }
         return select;
     };
-
+    function getCookie(name) {
+        var cookieValue = null;
+        if(document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            cookieStr = cookies.find(function(cookie) {
+                    var cook = $.trim(cookie);
+                    return cook.substring(0, name.length + 1) === (name + '=');
+                }); 
+             cookieValue = decodeURIComponent(cookieStr.substring(name.length + 1));   
+        }
+        return cookieValue;
+    }
+    
+    function csrfSafeMethod(method) {
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));    
+    }
     $(function(){
         order.init();
+        var csrfToken = getCookie('csrftoken');
+        $.ajaxSetup({
+           beforeSend: function(xhr, settings) {
+               if(!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrfToken);
+               }   
+            }    
+        });
     });
 })(jQuery, window);

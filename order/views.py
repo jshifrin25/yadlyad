@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect,  JsonResponse
 from django.shortcuts import render
-from order.models import Category, Item, Order, Product
+from order.models import Category, Item, Order
 from django.forms.models import modelformset_factory
 from .forms import ItemForm
 from django.contrib.auth.decorators import login_required
@@ -58,7 +58,13 @@ def cancel_order(request, order_id):
     inst = Order.objects.get(id=order_id)
     inst.delete()
     return HttpResponseRedirect(reverse('orders:index'))
-
+    
+def reset_order(request):
+    item_set = Item.objects.filter(order__id = request.POST['order'])
+    dict = {}
+    for item in item_set:
+        dict[item.product.prod_name] = item.quantity
+    return JsonResponse(dict,  safe=False)
 
 class LoginRequiredMixin(object):
     @classmethod
