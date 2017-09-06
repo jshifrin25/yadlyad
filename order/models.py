@@ -32,6 +32,19 @@ class Order(models.Model):
     recipient = models.ForeignKey('auth.User')
     date_created = models.DateField('Creation Date', auto_now=True)
     delivery = models.ForeignKey('order_delivery.Delivery', blank=True, null=True)
+    
+    def clone_for_newdelivery(self,  delivery):
+        order = Order(
+             recipient = self.recipient, 
+             delivery = delivery
+        )
+        order.save()
+        for item in self.item_set.all():
+            order.item_set.create(
+                product = item.product, 
+                quantity = item.quantity
+            )
+        return order
 
     def __str__(self):
         return 'Order #' + str(self.pk) + ' was made by User ' + str(self.recipient)

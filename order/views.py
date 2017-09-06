@@ -28,7 +28,12 @@ def order(request, order_id=-1):
         return confirmation(request, inst)
     else:
         order = Order.objects.filter(recipient=request.user).latest('id')
-        formset = item_form_set(queryset=Item.objects.filter(order__id=order.id))
+        if order_id != -1:
+            print('duplicating order',  order_id)
+            items = duplicate(order,  order_id)
+        else:
+            items = Item.objects.filter(order__id = order.id)
+        formset = item_form_set(queryset = items)
         context = {
             "formset": formset,
             "order_num": order.id,
@@ -65,6 +70,13 @@ def reset_order(request):
     for item in item_set:
         dict[item.product.prod_name] = item.quantity
     return JsonResponse(dict,  safe=False)
+    
+def duplicate(order,  id):
+    queryset = order.item_set.all()
+    dup_order = Order.objects.get(pk = id)
+    for entry in dup_order.item_set.all():
+        queryset.filter(product__prod_name = entry.product.prod_name).update(quantity = entry.quantity)
+    return queryset
 
 class LoginRequiredMixin(object):
     @classmethod
@@ -105,3 +117,4 @@ class OrderDetailView(LoginRequiredMixin, generic.DetailView):
     def get_object(self):
         order = super(OrderDetailView, self).get_object()
         return order
+        

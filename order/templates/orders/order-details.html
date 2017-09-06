@@ -16,4 +16,7 @@
     </div>
     {%endfor%}
 </div>
+<div class="section">
+   <div class="button"><a href="{%url 'orders:order' order.id %}" title="replace current order with this order">duplicate</a></div>
+</div>
 {% endblock %}
