@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http.response import HttpResponseRedirect,  JsonResponse
 from django.shortcuts import render
 from order.models import Category, Item, Order

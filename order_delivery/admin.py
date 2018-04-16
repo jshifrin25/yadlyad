@@ -23,9 +23,9 @@ class DeliveryAdmin(admin.ModelAdmin):
     def display_order_count(self, obj):
         return obj.get_order_count()
         
-    def duplicate_orders(self,  request,  queryset):
-        model = self.model
-        return model
-        
+    
+    def response_add(self,  request,  obj,  post_url_continue=None):
+        print(obj)
+        return self.response_post_save_add(request,  obj)
 
     display_order_count.short_description = 'Number of Orders'

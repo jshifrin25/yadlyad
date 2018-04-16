@@ -18,7 +18,7 @@ class Category(models.Model):
 class Product(models.Model):
     prod_name = models.CharField('Product Name', max_length=50)
     prod_description = models.CharField('Product Description', max_length=200)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     pesach_only = models.BooleanField(default=False)
     pesach_and_year = models.BooleanField('Pesach and the year too', default=True)
     weight_in_pounds = models.FloatField(default=0.0)
@@ -29,9 +29,9 @@ class Product(models.Model):
 
 
 class Order(models.Model):
-    recipient = models.ForeignKey('auth.User')
+    recipient = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     date_created = models.DateField('Creation Date', auto_now=True)
-    delivery = models.ForeignKey('order_delivery.Delivery', blank=True, null=True)
+    delivery = models.ForeignKey('order_delivery.Delivery', on_delete=models.CASCADE, blank=True, null=True)
     
     def clone_for_newdelivery(self,  delivery):
         order = Order(
